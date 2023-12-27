@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Drawing.Design;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -12,8 +11,8 @@ namespace WeatherApp.ViewModel.Helpers
     {
         public const string Base_Url = "http://dataservice.accuweather.com/";
         public const string AutoComplete_EndPoint = "locations/v1/cities/autocomplete?apikey={0}&q={1}&language=tr-tr";
-        public const string CurrentConditions_EndPoint = "currentconditions/v1/{0}?apikey={1}";
-        public const string Api_Key = "HnAq0rEJ3ECmUgV86uFn5dsVFhayf4BM";
+        public const string CurrentConditions_EndPoint = "currentconditions/v1/{0}?apikey={1}&language=tr-tr";
+        public const string Api_Key = "6w23GcyYBsQB89okHiYn6LjNlnGbXk50";
 
         public static async Task<List<City>> GetCities(string query)
         {
@@ -33,7 +32,7 @@ namespace WeatherApp.ViewModel.Helpers
         public static async Task<CurrentConditions> GetCurrentConditions(string cityKey)
         {
             CurrentConditions currentConditions = new CurrentConditions();
-            string url = Base_Url + string.Format(AutoComplete_EndPoint, Api_Key, cityKey);
+            string url = Base_Url + string.Format(CurrentConditions_EndPoint,cityKey,Api_Key );
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.GetAsync(url);

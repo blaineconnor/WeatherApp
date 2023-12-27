@@ -11,7 +11,7 @@ namespace WeatherApp.Models
         public bool HasPrecipitation { get; set; }
         public object Precipitation { get; set; }
         public bool IsDayTime { get; set; }
-        public Temprature Temprature { get; set; }
+        public Temperature Temperature { get; set; }
         public string MobileLink { get; set; }
         public string Link { get; set; }
     }
